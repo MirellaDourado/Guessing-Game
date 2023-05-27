@@ -93,21 +93,25 @@ public class GuessingGame {
     int playerGuess;
     int playerAttempts = 0;
     Boolean endMatch = false;
-    do {
-      System.out.print(ConsoleColors.RESET + "Digite um número: " + ConsoleColors.CYAN_UNDERLINED);
-      playerGuess = this._scanner.nextInt();
-      playerAttempts++;
-
-      if (playerAttempts == this._attempts || playerGuess == this._randomNumber) {
-        endMatch = true;
-      }
-
-      System.out.println(
-        ConsoleColors.RESET +
-        this.returnGuessResponse(playerGuess)
-      );
-    } while (endMatch == false);
-    this.finalResult(playerGuess == this._randomNumber, playerAttempts);
+    try {
+      do {
+        System.out.print(ConsoleColors.RESET + "Digite um número: " + ConsoleColors.CYAN_UNDERLINED);
+        playerGuess = this._scanner.nextInt();
+        playerAttempts++;
+  
+        if (playerAttempts == this._attempts || playerGuess == this._randomNumber) {
+          endMatch = true;
+        }
+  
+        System.out.println(
+          ConsoleColors.RESET +
+          this.returnGuessResponse(playerGuess)
+        );
+      } while (endMatch == false);
+      this.finalResult(playerGuess == this._randomNumber, playerAttempts);
+    } catch (Exception error) {
+      System.out.println(ConsoleColors.RESET + ConsoleColors.RED + "OPA! Entrada inexperada, finalizando o jogo...");
+    }
   }
 
   public void startGame() {

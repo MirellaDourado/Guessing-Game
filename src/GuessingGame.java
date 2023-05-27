@@ -39,8 +39,25 @@ public class GuessingGame {
     return this._randomNumber;
   }
 
-    public void startGame() {
-    System.out.println("############# BEM VINDO AO GUESSING GAME ################");
-    System.out.println(String.format("Você terá %d tentativas para acertar o número", this._attempts));
+  private void checkMatch() {
+    int playerGuess;
+    int playerAttempts = 0;
+    Boolean endMatch = false;
+    do {
+      System.out.println("Digite um número: ");
+      playerGuess = this._scanner.nextInt();
+      playerAttempts++;
+      if(playerAttempts == this._attempts || playerGuess == this._randomNumber) {
+        endMatch = true;
+      }
+      System.out.println(this.returnGuessResponse(playerGuess));
+    } while (endMatch == false);
+    this.finalResult(playerGuess == this._randomNumber, playerAttempts);
+  }
+
+  public void startGame() {
+  System.out.println("############# BEM VINDO AO GUESSING GAME ################");
+  System.out.println(String.format("Você terá %d tentativas para acertar o número", this._attempts));
+  this.checkMatch();
   }
 }

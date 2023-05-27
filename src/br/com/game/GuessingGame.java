@@ -1,3 +1,4 @@
+package br.com.game;
 import java.util.Scanner;
 
 public class GuessingGame {

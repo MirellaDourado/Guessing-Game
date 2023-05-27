@@ -40,14 +40,18 @@ public class GuessingGame {
   }
 
   private void endGame() {
-    String playerResponse;
-    System.out.println("Foi muito divertido! Você quer jogar de novo? (y/n)");
-    playerResponse = this._scanner.next();
-    if ("y".equalsIgnoreCase(playerResponse) || "yes".equalsIgnoreCase(playerResponse)) {
-      this.setRandomNumber();
-      this.checkMatch();
-    } else {
-      System.out.println("######## Tchau! #########");
+    try {
+      String playerResponse;
+      System.out.println("Foi muito divertido! Você quer jogar de novo? (y/n)");
+      playerResponse = this._scanner.next();
+      if ("y".equalsIgnoreCase(playerResponse) || "yes".equalsIgnoreCase(playerResponse)) {
+        this.setRandomNumber();
+        this.checkMatch();
+      } else {
+        System.out.println("######## Tchau! #########");
+      }
+    } catch (Exception e) {
+      System.out.println("Essa não é uma opção válida, encerrando o programa...");
     }
   }
 

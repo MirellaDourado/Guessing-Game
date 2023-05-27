@@ -43,21 +43,20 @@ public class GuessingGame {
   }
 
   private void endGame() {
-    try {
-      String playerResponse;
-      System.out.println(ConsoleColors.RESET + "Foi muito divertido! Você quer jogar de novo? (y/n)");
+    String playerResponse;
+    System.out.println(ConsoleColors.RESET + "Foi muito divertido! Você quer jogar de novo? (y/n)");
+    do {
       playerResponse = this._scanner.next();
       if ("y".equalsIgnoreCase(playerResponse) || "yes".equalsIgnoreCase(playerResponse)) {
         this.setRandomNumber();
         this.checkMatch();
-      } else {
+      } if ("n".equalsIgnoreCase(playerResponse) || "no".equalsIgnoreCase(playerResponse)) {
         System.out.println(ConsoleColors.CYAN_BACKGROUND + "######## Tchau! #########");
-        this._scanner.close();
+      } else {
+        System.out.println(ConsoleColors.RED + "Essa não é uma opção válida, digite de novo: " + ConsoleColors.RESET);
       }
-    } catch (Exception e) {
-      System.out.println(ConsoleColors.RED + "Essa não é uma opção válida, encerrando o programa...");
-      this._scanner.close();
-    }
+    } while (!"n".equalsIgnoreCase(playerResponse) || !"no".equalsIgnoreCase(playerResponse));
+    this._scanner.close();
   }
 
   private void finalResult(boolean isWinner, int playerAttempts) {
@@ -110,7 +109,8 @@ public class GuessingGame {
       } while (endMatch == false);
       this.finalResult(playerGuess == this._randomNumber, playerAttempts);
     } catch (Exception error) {
-      System.out.println(ConsoleColors.RESET + ConsoleColors.RED + "OPA! Entrada inesperada, finalizando o jogo...");
+      System.out.println(error);
+      // System.out.println(ConsoleColors.RESET + ConsoleColors.RED + "OPA! Entrada inesperada, finalizando o jogo...");
     }
   }
 
@@ -124,7 +124,6 @@ public class GuessingGame {
         this._attempts
         )
     );
-    System.out.println();
     this.checkMatch();
   }
 }

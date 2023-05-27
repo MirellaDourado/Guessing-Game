@@ -45,7 +45,7 @@ public class GuessingGame {
     playerResponse = this._scanner.next();
     if ("y".equalsIgnoreCase(playerResponse) || "yes".equalsIgnoreCase(playerResponse)) {
       this.setRandomNumber();
-      this.startGame();
+      this.checkMatch();
     } else {
       System.out.println("######## Tchau! #########");
     }
@@ -90,8 +90,8 @@ public class GuessingGame {
   }
 
   public void startGame() {
-  System.out.println("############# BEM VINDO AO GUESSING GAME ################");
-  System.out.println(String.format("Você terá %d tentativas para acertar o número", this._attempts));
-  this.checkMatch();
+    System.out.println("############# BEM VINDO AO GUESSING GAME ################");
+    System.out.println(String.format("Você terá %d tentativas para acertar o número", this._attempts));
+    this.checkMatch();
   }
 }

@@ -103,6 +103,7 @@ public class GuessingGame {
       }
 
       System.out.println(
+        ConsoleColors.RESET +
         this.returnGuessResponse(playerGuess)
       );
     } while (endMatch == false);

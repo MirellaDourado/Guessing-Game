@@ -39,6 +39,16 @@ public class GuessingGame {
     return this._randomNumber;
   }
 
+  private void finalResult(boolean isWinner, int playerAttempts) {
+    if (isWinner) {
+      System.out.println(String
+        .format("Você conseguiu acertar o número na %dª tentativa!", playerAttempts));
+    } else {
+      System.out.println(String
+          .format("Que pena, seu número era %d e você não conseguiu acertar em %d tentativas, mas não desista", this._randomNumber, this._attempts));
+    }
+  }
+
   private String returnGuessResponse(int playerGuess) {
     if (playerGuess < this._randomNumber) {
       return String.format("O número é maior do que %d", playerGuess);

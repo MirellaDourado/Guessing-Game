@@ -51,11 +51,11 @@ public class GuessingGame {
         this.setRandomNumber();
         this.checkMatch();
       } else {
-        System.out.println("######## Tchau! #########");
+        System.out.println(ConsoleColors.CYAN_BACKGROUND + "######## Tchau! #########");
         this._scanner.close();
       }
     } catch (Exception e) {
-      System.out.println("Essa não é uma opção válida, encerrando o programa...");
+      System.out.println(ConsoleColors.RED + "Essa não é uma opção válida, encerrando o programa...");
       this._scanner.close();
     }
   }
@@ -110,7 +110,7 @@ public class GuessingGame {
       } while (endMatch == false);
       this.finalResult(playerGuess == this._randomNumber, playerAttempts);
     } catch (Exception error) {
-      System.out.println(ConsoleColors.RESET + ConsoleColors.RED + "OPA! Entrada inexperada, finalizando o jogo...");
+      System.out.println(ConsoleColors.RESET + ConsoleColors.RED + "OPA! Entrada inesperada, finalizando o jogo...");
     }
   }
 

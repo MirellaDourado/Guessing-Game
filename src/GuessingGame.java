@@ -39,6 +39,16 @@ public class GuessingGame {
     return this._randomNumber;
   }
 
+  private String returnGuessResponse(int playerGuess) {
+    if (playerGuess < this._randomNumber) {
+      return String.format("O número é maior do que %d", playerGuess);
+    } else if (playerGuess > this._randomNumber) {
+      return String.format("O número é menor do que %d", playerGuess);
+    } else {
+      return String.format("Parabéns, você acertou o resultado, o número era %d! ", this._randomNumber);
+    }
+  }
+
   private void checkMatch() {
     int playerGuess;
     int playerAttempts = 0;

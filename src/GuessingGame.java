@@ -39,6 +39,18 @@ public class GuessingGame {
     return this._randomNumber;
   }
 
+  private void endGame() {
+    String playerResponse;
+    System.out.println("Foi muito divertido! Você quer jogar de novo? (y/n)");
+    playerResponse = this._scanner.next();
+    if ("y".equalsIgnoreCase(playerResponse) || "yes".equalsIgnoreCase(playerResponse)) {
+      this.setRandomNumber();
+      this.startGame();
+    } else {
+      System.out.println("######## Tchau! #########");
+    }
+  }
+
   private void finalResult(boolean isWinner, int playerAttempts) {
     if (isWinner) {
       System.out.println(String
@@ -47,6 +59,8 @@ public class GuessingGame {
       System.out.println(String
           .format("Que pena, seu número era %d e você não conseguiu acertar em %d tentativas, mas não desista", this._randomNumber, this._attempts));
     }
+
+    this.endGame();
   }
 
   private String returnGuessResponse(int playerGuess) {

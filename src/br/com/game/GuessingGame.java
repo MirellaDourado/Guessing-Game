@@ -1,5 +1,7 @@
 package br.com.game;
+
 import java.util.Scanner;
+import br.com.colors.ConsoleColors;
 
 public class GuessingGame {
   private int _minNumber;
@@ -43,26 +45,35 @@ public class GuessingGame {
   private void endGame() {
     try {
       String playerResponse;
-      System.out.println("Foi muito divertido! Você quer jogar de novo? (y/n)");
+      System.out.println(ConsoleColors.RESET + "Foi muito divertido! Você quer jogar de novo? (y/n)");
       playerResponse = this._scanner.next();
       if ("y".equalsIgnoreCase(playerResponse) || "yes".equalsIgnoreCase(playerResponse)) {
         this.setRandomNumber();
         this.checkMatch();
       } else {
         System.out.println("######## Tchau! #########");
+        this._scanner.close();
       }
     } catch (Exception e) {
       System.out.println("Essa não é uma opção válida, encerrando o programa...");
+      this._scanner.close();
     }
   }
 
   private void finalResult(boolean isWinner, int playerAttempts) {
     if (isWinner) {
       System.out.println(String
-        .format("Você conseguiu acertar o número na %dª tentativa!", playerAttempts));
+        .format(
+          "Você conseguiu acertar o número na %dª tentativa!", playerAttempts
+        ));
     } else {
-      System.out.println(String
-          .format("Que pena, seu número era %d e você não conseguiu acertar em %d tentativas, mas não desista", this._randomNumber, this._attempts));
+      System.out.println(
+        ConsoleColors.RED_BOLD +
+        String.format(
+            "\nQue pena, seu número era %d e você não conseguiu acertar em %d tentativas,\n mas não desista!",
+            this._randomNumber,
+            this._attempts
+          ));
     }
 
     this.endGame();
@@ -70,11 +81,11 @@ public class GuessingGame {
 
   private String returnGuessResponse(int playerGuess) {
     if (playerGuess < this._randomNumber) {
-      return String.format("O número é maior do que %d", playerGuess);
+      return String.format(ConsoleColors.YELLOW_BRIGHT + "O número é maior do que %d. ", playerGuess);
     } else if (playerGuess > this._randomNumber) {
-      return String.format("O número é menor do que %d", playerGuess);
+      return String.format(ConsoleColors.BLUE_BOLD + "O número é menor do que %d. ", playerGuess);
     } else {
-      return String.format("Parabéns, você acertou o resultado, o número era %d! ", this._randomNumber);
+      return ConsoleColors.GREEN_BOLD_BRIGHT + String.format("Parabéns, você acertou o resultado, o número era %d! ", this._randomNumber);
     }
   }
 
@@ -83,20 +94,32 @@ public class GuessingGame {
     int playerAttempts = 0;
     Boolean endMatch = false;
     do {
-      System.out.println("Digite um número: ");
+      System.out.print(ConsoleColors.RESET + "Digite um número: " + ConsoleColors.CYAN_UNDERLINED);
       playerGuess = this._scanner.nextInt();
       playerAttempts++;
-      if(playerAttempts == this._attempts || playerGuess == this._randomNumber) {
+
+      if (playerAttempts == this._attempts || playerGuess == this._randomNumber) {
         endMatch = true;
       }
-      System.out.println(this.returnGuessResponse(playerGuess));
+
+      System.out.println(
+        this.returnGuessResponse(playerGuess)
+      );
     } while (endMatch == false);
     this.finalResult(playerGuess == this._randomNumber, playerAttempts);
   }
 
   public void startGame() {
-    System.out.println("############# BEM VINDO AO GUESSING GAME ################");
-    System.out.println(String.format("Você terá %d tentativas para acertar o número", this._attempts));
+    System.out.println(
+      ConsoleColors.CYAN_BACKGROUND +
+      "############# BEM VINDO AO GUESSING GAME ################\n" +
+      ConsoleColors.RESET +
+      String.format(
+         "Você terá %d tentativas para acertar o número",
+        this._attempts
+        )
+    );
+    System.out.println();
     this.checkMatch();
   }
 }

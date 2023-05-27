@@ -38,4 +38,9 @@ public class GuessingGame {
   public int getRandomNumber() {
     return this._randomNumber;
   }
+
+    public void startGame() {
+    System.out.println("############# BEM VINDO AO GUESSING GAME ################");
+    System.out.println(String.format("Você terá %d tentativas para acertar o número", this._attempts));
+  }
 }

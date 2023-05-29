@@ -157,7 +157,7 @@ public class GuessingGame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
-        playButton.setText("Play");
+        playButton.setText("Jogar");
         playButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 playButtonMouseClicked(evt);
@@ -166,7 +166,7 @@ public class GuessingGame extends javax.swing.JFrame {
 
         title.setFont(new java.awt.Font("Liberation Sans", 0, 28)); // NOI18N
         title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        title.setText("The Guessing Number");
+        title.setText("GUESSING GAME");
 
         javax.swing.GroupLayout MenuLayout = new javax.swing.GroupLayout(Menu);
         Menu.setLayout(MenuLayout);

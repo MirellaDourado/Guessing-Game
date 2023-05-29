@@ -109,8 +109,7 @@ public class GuessingGame {
       } while (endMatch == false);
       this.finalResult(playerGuess == this._randomNumber, playerAttempts);
     } catch (Exception error) {
-      System.out.println(error);
-      // System.out.println(ConsoleColors.RESET + ConsoleColors.RED + "OPA! Entrada inesperada, finalizando o jogo...");
+      System.out.println(ConsoleColors.RESET + ConsoleColors.RED + "OPA! Entrada inesperada, finalizando o jogo...");
     }
   }
 

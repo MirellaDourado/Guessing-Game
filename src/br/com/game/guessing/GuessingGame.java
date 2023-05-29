@@ -1,7 +1,8 @@
-package br.com.game;
+package br.com.game.guessing;
 
 import java.util.Scanner;
-import br.com.colors.ConsoleColors;
+
+import br.com.game.colors.ConsoleColors;
 
 public class GuessingGame {
   private int _minNumber;

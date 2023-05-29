@@ -1,4 +1,4 @@
-package br.com.colors;
+package br.com.game.colors;
 
 public class ConsoleColors {
   // Reset

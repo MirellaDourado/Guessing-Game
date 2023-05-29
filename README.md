@@ -6,11 +6,11 @@ O projeto contém uma pasta:
 
 - `src` : a pasta que contém todo o código
   
-  - `br.com.colors`: pacote criado que possui as cores para personalizar saídas e entradas no terminal.
+  - `br.com.game.colors`: pacote criado que possui a classe com as cores para personalizar saídas e entradas no terminal.
     
     - `ConsoleColors.java`: classe que possui cores a serem exibidas no console.
   
-  - `br.com.colors`: pacote criado que possui as funções do jogo.
+  - `br.com.game.guessing`: pacote criado que possui a classe do jogo.
 
     - `GuessingGame.java`: classe que possui a lógica do jogo.
   

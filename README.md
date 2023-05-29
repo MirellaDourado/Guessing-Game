@@ -1,6 +1,6 @@
 # Guessing Game
 
-## Estrutura das pastas
+## Estrutura do código
 
 O projeto contém uma pasta:
 

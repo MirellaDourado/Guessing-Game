@@ -26,8 +26,6 @@ O foi desenvolvido para rodar no terminal do computador e ao ser executado irá 
 
 ### Regras
 
-O jogo se encerra caso:
-
 1. **Caso de derrota**: Você esgote as tentativas de acertar o número.
 
 2. **Caso de vitória**: Você acerte o número secreto dentro do número de tentativas do jogo.

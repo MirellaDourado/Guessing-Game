@@ -1,4 +1,4 @@
-import br.com.game.GuessingGame;
+import br.com.game.guessing.GuessingGame;
 
 public class Main {
   public static void main(String[] args) throws Exception {

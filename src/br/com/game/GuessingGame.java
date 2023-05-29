@@ -43,21 +43,20 @@ public class GuessingGame {
   }
 
   private void endGame() {
-    try {
-      String playerResponse;
-      System.out.println(ConsoleColors.RESET + "Foi muito divertido! Você quer jogar de novo? (y/n)");
+    String playerResponse;
+    System.out.println(ConsoleColors.RESET + "Foi muito divertido! Você quer jogar de novo? (y/n)");
+    do {
       playerResponse = this._scanner.next();
       if ("y".equalsIgnoreCase(playerResponse) || "yes".equalsIgnoreCase(playerResponse)) {
         this.setRandomNumber();
         this.checkMatch();
+      } if ("n".equalsIgnoreCase(playerResponse) || "no".equalsIgnoreCase(playerResponse)) {
+        System.out.println(ConsoleColors.CYAN_BACKGROUND + "######## Tchau! #########");
       } else {
-        System.out.println("######## Tchau! #########");
-        this._scanner.close();
+        System.out.println(ConsoleColors.RED + "Essa não é uma opção válida, digite de novo: " + ConsoleColors.RESET);
       }
-    } catch (Exception e) {
-      System.out.println("Essa não é uma opção válida, encerrando o programa...");
-      this._scanner.close();
-    }
+    } while (!"n".equalsIgnoreCase(playerResponse) || !"no".equalsIgnoreCase(playerResponse));
+    this._scanner.close();
   }
 
   private void finalResult(boolean isWinner, int playerAttempts) {
@@ -93,20 +92,25 @@ public class GuessingGame {
     int playerGuess;
     int playerAttempts = 0;
     Boolean endMatch = false;
-    do {
-      System.out.print(ConsoleColors.RESET + "Digite um número: " + ConsoleColors.CYAN_UNDERLINED);
-      playerGuess = this._scanner.nextInt();
-      playerAttempts++;
-
-      if (playerAttempts == this._attempts || playerGuess == this._randomNumber) {
-        endMatch = true;
-      }
-
-      System.out.println(
-        this.returnGuessResponse(playerGuess)
-      );
-    } while (endMatch == false);
-    this.finalResult(playerGuess == this._randomNumber, playerAttempts);
+    try {
+      do {
+        System.out.print(ConsoleColors.RESET + "Digite um número: " + ConsoleColors.CYAN_UNDERLINED);
+        playerGuess = this._scanner.nextInt();
+        playerAttempts++;
+  
+        if (playerAttempts == this._attempts || playerGuess == this._randomNumber) {
+          endMatch = true;
+        }
+  
+        System.out.println(
+          ConsoleColors.RESET +
+          this.returnGuessResponse(playerGuess)
+        );
+      } while (endMatch == false);
+      this.finalResult(playerGuess == this._randomNumber, playerAttempts);
+    } catch (Exception error) {
+      System.out.println(ConsoleColors.RESET + ConsoleColors.RED + "OPA! Entrada inesperada, finalizando o jogo...");
+    }
   }
 
   public void startGame() {
@@ -119,7 +123,6 @@ public class GuessingGame {
         this._attempts
         )
     );
-    System.out.println();
     this.checkMatch();
   }
 }

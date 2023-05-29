@@ -30,13 +30,11 @@ Ao ser iniciado o jogo sorteará um número aleatório que poderá ir de 1 até 
 
 ### Regras
 
-1. **Caso de derrota**: Você esgote as tentativas de acertar o número.
+1. O jogador perde caso não acerte o número em 10 tentativas.
 
-2. **Caso de vitória**: Você acerte o número secreto dentro do número de tentativas do jogo.
+2. O jogador ganha caso acerte o número secreto dentro de 10 tentativas.
 
 ### Encerramento do jogo
-
-
 
 - **Terminal**: O jogo possui duas formas de encerramento
 
